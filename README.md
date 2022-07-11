@@ -46,19 +46,21 @@ C++ 코딩은 혼자서 책을 보며 해본 적이 있었고, openCV도 책을 
 ![슬라이드5](https://user-images.githubusercontent.com/35258559/178184472-82b7534c-9e2f-4573-993f-0dd792401a59.JPG)   <br/>
 ![슬라이드4](https://user-images.githubusercontent.com/35258559/178184470-e05cf2e7-f752-40c2-8d83-cce5b9de72ae.JPG)   <br/>
 ![슬라이드3](https://user-images.githubusercontent.com/35258559/178184468-209b4029-3836-41fa-8445-fed53209d55e.JPG) <br/> 
-![슬라이드12](https://user-images.githubusercontent.com/35258559/178184481-6b57f9a2-22ff-4460-b8ad-bd70f1f80b15.JPG)  <br/>
+
+그 다음은 기계부분이다. 1학년 때 카티아로 3D 모델링을 해본 경험이 있었기 때문에 3D CAD툴에 대한 거부감은 없었다. 그냥 A4용지에 연필로 그림을 그려가며 치수를 예상하였고, 3D 프린터로 계속 출력해보며 부품들을 뽑아서 조립하였다. 톱니바퀴 설계랑 톱니바퀴랑 맞물리는 랙을 설계하는게 까다로웠다. 또한 치수가 조금이라도 안맞으면 기계가 조립이 안되는 경우도 많았고, 3D프린터도 계속 노즐이 막히거나 모터가 고장나서 내가 직접 고쳐가며 출력해나갔다. 출력을 해도 조립할 때 부품간에 공차가 안맞으면 조립이 불가능하여 다시 도면을 수정하고 다시 출력하는 과정을 많이 거쳤다. 시간이 상당히 오래걸리는 작업이었다.  <br/>
 
 ![슬라이드13](https://user-images.githubusercontent.com/35258559/178184482-d3625510-cdc0-4020-b9e3-502f661352fd.JPG) <br/>
 ![슬라이드14](https://user-images.githubusercontent.com/35258559/178184483-bcf7a71e-09d3-494b-b227-061c05261254.JPG)   <br/>
 ![슬라이드15](https://user-images.githubusercontent.com/35258559/178184484-95e290e1-d908-44b5-b0fd-b397dadde059.JPG)   <br/> <br/> <br/>
 
-그 다음은 기계부분이다. 1학년 때 카티아로 3D 모델링을 해본 경험이 있었기 때문에 3D CAD툴에 대한 거부감은 없었다. 그냥 A4용지에 연필로 그림을 그려가며 치수를 예상하였고, 3D 프린터로 계속 출력해보며 부품들을 뽑아서 조립하였다. 톱니바퀴 설계랑 톱니바퀴랑 맞물리는 랙을 설계하는게 까다로웠다. 또한 치수가 조금이라도 안맞으면 기계가 조립이 안되는 경우도 많았고, 3D프린터도 계속 노즐이 막히거나 모터가 고장나서 내가 직접 고쳐가며 출력해나갔다. 출력을 해도 조립할 때 부품간에 공차가 안맞으면 조립이 불가능하여 다시 도면을 수정하고 다시 출력하는 과정을 많이 거쳤다. 시간이 상당히 오래걸리는 작업이었다.  <br/>
+
 ![슬라이드16](https://user-images.githubusercontent.com/35258559/178184487-d3c15113-0d0e-47fc-aa7e-fa62e55acfa0.JPG)   <br/>
 ![슬라이드17](https://user-images.githubusercontent.com/35258559/178184488-dc6b2ce9-37a7-4a98-a8a3-6d21b03b7814.JPG)   <br/>
 ![181119 - 캡디 마지막 발표자료](https://user-images.githubusercontent.com/35258559/178198152-6bb8f59e-5c41-45cf-9533-5e95d3358092.jpg) <br/>
 ![181119 - 캡디 마지막 발표자료](https://user-images.githubusercontent.com/35258559/178198998-70985690-ea66-4ae0-b395-9062662a84cf.jpg) <br/><br/> <br/>
 
 마지막은 라즈베리파이에 서보모터 제어 라이브러리를 설치하여 서보모터 5개와 스텝모터2개를 연결하여 브레드보드에 전원을 넣어주었다. 또한 각각 기계팔과 서보모터를 회전시켜 주었다. 두번째 문단에서 큐브를 완성해 주는 순서가 담겨있는 배열을 반복문으로 읽어보며, 배열에 들어있는 각각의 값( 앞면회전, 윗면회전, 좌측면 반시계방향 회전 등) 에 따라 동작할 일련의 모터 제어 순서를 코드로 정해 두었다. 즉 앞면을 시계방항으로 회전시킨다고 하면, 각각 기계팔이 어떻게 움직여야 할지 일련의 동작 순서들을 실행할 함수들을 만들었다.  <br/>
+![슬라이드12](https://user-images.githubusercontent.com/35258559/178184481-6b57f9a2-22ff-4460-b8ad-bd70f1f80b15.JPG)  <br/>
 ![회로도](https://user-images.githubusercontent.com/35258559/178190585-e35f6089-4728-4392-82f7-0862b42ec081.JPG)<br/>
 ![슬라이드21](https://user-images.githubusercontent.com/35258559/178184493-82f6b0e6-c0ff-4fff-a29b-59c07ea4c29e.JPG)   <br/><br/>
 ![슬라이드22](https://user-images.githubusercontent.com/35258559/178184494-d51e75bb-c58c-42a7-a935-0eaa9056d280.JPG)   <br/><br/>
