@@ -1,5 +1,5 @@
-//Á¶¸í Å×½ºÆ® ÇÏ±â
-// È­¸é¿¡ ¸ğÀÚÀÌÅ© Ã³¸® ¾ø¾Ö±â
+//ì¡°ëª… í…ŒìŠ¤íŠ¸ í•˜ê¸°
+// í™”ë©´ì— ëª¨ìì´í¬ ì²˜ë¦¬ ì—†ì• ê¸°
 
 
 
@@ -52,7 +52,7 @@ using namespace cv;
 #define BUTTON_B 31
 
 
-// R ~ Bi : 1~ 12 ¸¦ Â÷ÁöÇÏ°í ÀÖ´Ù.
+// R ~ Bi : 1~ 12 ë¥¼ ì°¨ì§€í•˜ê³  ìˆë‹¤.
 #define UTF 13 
 #define FTU 14
 #define R2 15
@@ -62,7 +62,7 @@ using namespace cv;
 #define F2 19
 #define B2 20
 
-int initial_color[200] = { //¿øÇÏ´Â »ö±ò·Î ÃÊ±âÈ­, @@ ÁÖÀÇ!!!! ½ÊÀÚ°¡ ¹æÇâ¿¡ EMPTY°¡ µé¾î°¡¸é ¿À·ù³­´Ù!
+int initial_color[200] = { //ì›í•˜ëŠ” ìƒ‰ê¹”ë¡œ ì´ˆê¸°í™”, @@ ì£¼ì˜!!!! ì‹­ìê°€ ë°©í–¥ì— EMPTYê°€ ë“¤ì–´ê°€ë©´ ì˜¤ë¥˜ë‚œë‹¤!
 	0,
 	/*__,__,__,GR,WH,WH,__,__,__,__,__,__,
 	__,__,__,BL,RE,RE,__,__,__,__,__,__,
@@ -79,14 +79,14 @@ int CUBE_ARRAY[200] = { 0 };
 int ROTATE_ORDER[200] = { 0 };
 int UTF_FTU_ORDER[400] = { 0 };
 int TEMP_ORDER[200] = { 0 };
-int PARTIAL_ORDER[8][200] = { 0 }; //ÀÎµ¦½º´Â 1ºÎÅÍ ½ÃÀÛÇÏ´Ï °¢ LVÇÔ¼ö¿¡¼­ Á¶½É ÇØ¾ßÇÑ´Ù.
+int PARTIAL_ORDER[8][200] = { 0 }; //ì¸ë±ìŠ¤ëŠ” 1ë¶€í„° ì‹œì‘í•˜ë‹ˆ ê° LVí•¨ìˆ˜ì—ì„œ ì¡°ì‹¬ í•´ì•¼í•œë‹¤.
 
 
 int Level_Checker[8] = { 0 };
 int cnt_white, cnt_yellow, cnt_orange, cnt_pink, cnt_green, cnt_blue;
 
-int Lv1_TARGET_array[50] = { 4,15,17,28,37,48,50,61,76,87,89,100,43,54,56,67,46,57,59,70 };//Á¤¸é½ÊÀÚ°¡ Å¸°Ùºí·Ï¹üÀ§
-int Lv2_TARGET_array[4] = { 46,57,59,70 };// Á¤¸é½ÊÀÚ°¡ÀÇ ÆÈ ºÎºĞ /µŞ¸é¿¡¼­ Ã£´Â´Ù.
+int Lv1_TARGET_array[50] = { 4,15,17,28,37,48,50,61,76,87,89,100,43,54,56,67,46,57,59,70 };//ì •ë©´ì‹­ìê°€ íƒ€ê²Ÿë¸”ë¡ë²”ìœ„
+int Lv2_TARGET_array[4] = { 46,57,59,70 };// ì •ë©´ì‹­ìê°€ì˜ íŒ” ë¶€ë¶„ /ë’·ë©´ì—ì„œ ì°¾ëŠ”ë‹¤.
 class Rotate {
 public:
 	int R(int cube_array[], int order[]);  //return 1
@@ -111,7 +111,7 @@ void LV_show_order(int order[], int order_index);
 int check_order_empty(int order[]);
 
 void LV1(int cube_array[], int color[], int rotate_order[], int lv1_target_array[]);
-//LV1Àº Á¤¸é ½ÊÀÚ°¡ ¿Ï¼ºÇÏ´Â ´Ü°è
+//LV1ì€ ì •ë©´ ì‹­ìê°€ ì™„ì„±í•˜ëŠ” ë‹¨ê³„
 bool check_front_cross(int cube_array[]);
 int Lv1_search_target_block(int target_array[], int cube_array[]);
 int Give_target_block_partner_location(int target_location);
@@ -124,9 +124,9 @@ void shift_order_move2(int rotate_order[], int num);
 
 void LV2(int cube_array[], int color[], int rotate_order[], int lv2_target_array[]);
 void recursive(int cube_array[]);
-//LV2´Â ½ÊÀÚ°¡ÀÇ ¿·¸é°ú ¿·¸éÁß¾Ó »ö±ò°ú ÀÏÄ¡½ÃÅ°´Â ´Ü°è
+//LV2ëŠ” ì‹­ìê°€ì˜ ì˜†ë©´ê³¼ ì˜†ë©´ì¤‘ì•™ ìƒ‰ê¹”ê³¼ ì¼ì¹˜ì‹œí‚¤ëŠ” ë‹¨ê³„
 bool check_SideOfCross_equal_SideOfCenter_COLOR(int cube_array[]);
-//optimizing_order(ROTATE_ORDER);//Ãâ·ÂÇÏ±âÀü¿¡ ¼ø¼­¸¦ °£¼ÒÈ­ ½ÃÅ²´Ù. F-F-F¸¦ Fi·Î °íÄ¡´Â ¹æ½Ä
+//optimizing_order(ROTATE_ORDER);//ì¶œë ¥í•˜ê¸°ì „ì— ìˆœì„œë¥¼ ê°„ì†Œí™” ì‹œí‚¨ë‹¤. F-F-Fë¥¼ Fië¡œ ê³ ì¹˜ëŠ” ë°©ì‹
 bool check_two_block_same(int partner_color);
 bool Check_exist_target(int cube_array[]);
 int LV2_search_target_block(int target_array[], int cube_array[]);
@@ -202,7 +202,7 @@ void Delay() {
 void servo0_90() {
 	system("echo 0=213>/dev/servoblaster");
 }
-void servo0_R90() { //°ªÀÌ ÁÙ¾îµé¸é ¸®¹ö½º 90ÀÌ´Ù.
+void servo0_R90() { //ê°’ì´ ì¤„ì–´ë“¤ë©´ ë¦¬ë²„ìŠ¤ 90ì´ë‹¤.
 	system("echo 0=74>/dev/servoblaster");
 }
 void servo0_vertical() {
@@ -244,7 +244,7 @@ void servo3_vertical() {
 void Force_servo0_90() {
 	system("echo 0=218>/dev/servoblaster");
 }
-void Force_servo0_R90() { //°ªÀÌ ÁÙ¾îµé¸é ¸®¹ö½º 90ÀÌ´Ù.
+void Force_servo0_R90() { //ê°’ì´ ì¤„ì–´ë“¤ë©´ ë¦¬ë²„ìŠ¤ 90ì´ë‹¤.
 	system("echo 0=70>/dev/servoblaster");
 }
 void Force_servo0_vertical() {
@@ -409,7 +409,7 @@ void vertical_rotate() {
 
 void flip180(){
 	
-	bottom_DOWN();//Ãß°¡µÊ
+	bottom_DOWN();//ì¶”ê°€ë¨
 
 	servo1_R90();
 	delay(3);
@@ -452,7 +452,7 @@ void vertical_rotate_back() {
 
 void horizontal_rotate() {
 
-	move13_OUT();//holding Ãß°¡ ÇØÁÙ°Í
+	move13_OUT();//holding ì¶”ê°€ í•´ì¤„ê²ƒ
 
 	servo0_R90();
 	delay(2);
@@ -527,7 +527,7 @@ void servoDi() {
 void servoR() {
 	/*move13_OUT();
 	Delay();
-	NoCube_servo1_R90(); //¿§³¯ ±âµÕ ¹øÈ£ÇÏ°í Áö±İ ¹øÈ£ÇÏ°í 1,3¹øÀÌ ¹Ù²î¾î ÀÖ´Ù. Áö±İ ÀÌ ÁÙÀº ¿¾³¯ ¹öÀüÀÌ´Ù.
+	NoCube_servo1_R90(); //ì—£ë‚  ê¸°ë‘¥ ë²ˆí˜¸í•˜ê³  ì§€ê¸ˆ ë²ˆí˜¸í•˜ê³  1,3ë²ˆì´ ë°”ë€Œì–´ ìˆë‹¤. ì§€ê¸ˆ ì´ ì¤„ì€ ì˜›ë‚  ë²„ì „ì´ë‹¤.
 	move13_IN();
 
 	servo3_vertical();
@@ -580,12 +580,12 @@ void servoF() {
 	servoU();
 	////vertical_rotate();
 
-	////¾Æ·¡´Â Æ¯º°
+	////ì•„ë˜ëŠ” íŠ¹ë³„
 	//Force_servo2_90();
 	//Delay();
 
 	//move02_OUT_Vertical();
-	////¾Æ·¡´Â °øÅë
+	////ì•„ë˜ëŠ” ê³µí†µ
 	//servo1_90();
 	//delay(2);
 	//servo3_R90();
@@ -609,12 +609,12 @@ void servoFi() {
 	servoUi();
 	////vertical_rotate();
 
-	////¾Æ·¡´Â Æ¯º°
+	////ì•„ë˜ëŠ” íŠ¹ë³„
 	//Force_servo2_R90();
 	//Delay();
 
 	//move02_OUT_Vertical();
-	////¾Æ·¡´Â °øÅë
+	////ì•„ë˜ëŠ” ê³µí†µ
 	//servo1_90();
 	//delay(2);
 	//servo3_R90();
@@ -639,12 +639,12 @@ void servoB() {
 	servoD();
 	////vertical_rotate();
 	//
-	////¾Æ·¡´Â Æ¯º°
+	////ì•„ë˜ëŠ” íŠ¹ë³„
 	//Force_servo0_90();
 	//Delay();
 
 	//move02_OUT_Vertical();
-	////¾Æ·¡´Â °øÅë
+	////ì•„ë˜ëŠ” ê³µí†µ
 	//servo1_90();
 	//delay(2);
 	//servo3_R90();
@@ -668,12 +668,12 @@ void servoBi() {
 	servoDi();
 	////vertical_rotate();
 
-	////¾Æ·¡´Â Æ¯º°
+	////ì•„ë˜ëŠ” íŠ¹ë³„
 	//Force_servo0_R90();
 	//Delay();
 
 	//move02_OUT_Vertical();
-	////¾Æ·¡´Â °øÅë
+	////ì•„ë˜ëŠ” ê³µí†µ
 	//servo1_90();
 	//delay(2);
 	//servo3_R90();
@@ -846,8 +846,8 @@ void RotateOrder_Reverse(int length)
 
 	for (int i = 0; i < num; i++)
 	{
-		//È¦¼ö¸é 1¿Ã·ÁÁÖ°í Â¦¼ö¸é 1 ¸¶ÀÌ³Ê½º ÇØÁØ´Ù. 
-		//ÀúÀåµÈ ¼ø¼­ »Ó¸¸ ¾Æ´Ï¶ó ½Ã°è ¹İ½Ã°è ¼ø¼­±îÁö ¹Ù²Û´Ù.
+		//í™€ìˆ˜ë©´ 1ì˜¬ë ¤ì£¼ê³  ì§ìˆ˜ë©´ 1 ë§ˆì´ë„ˆìŠ¤ í•´ì¤€ë‹¤. 
+		//ì €ì¥ëœ ìˆœì„œ ë¿ë§Œ ì•„ë‹ˆë¼ ì‹œê³„ ë°˜ì‹œê³„ ìˆœì„œê¹Œì§€ ë°”ê¾¼ë‹¤.
 		if (ROTATE_ORDER[num - 1 - i] % 2 == 0)
 		{
 			TEMP_ORDER[i] = (ROTATE_ORDER[num - 1 - i] - 1);
@@ -864,39 +864,39 @@ void RotateOrder_Reverse(int length)
 }
 
 void Partial_order_save(void) {
-	for (int i = 0, j = 0; i < Level_Checker[0]; i++, j++) { //LV1 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = 0, j = 0; i < Level_Checker[0]; i++, j++) { //LV1 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[0][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[0], j = 0; i < Level_Checker[1]; i++, j++) {//LV2 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[0], j = 0; i < Level_Checker[1]; i++, j++) {//LV2 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[1][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[1], j = 0; i < Level_Checker[2]; i++, j++) {//LV3 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[1], j = 0; i < Level_Checker[2]; i++, j++) {//LV3 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[2][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[2], j = 0; i < Level_Checker[3]; i++, j++) {//LV4 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[2], j = 0; i < Level_Checker[3]; i++, j++) {//LV4 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[3][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[3], j = 0; i < Level_Checker[4]; i++, j++) {//LV5 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[3], j = 0; i < Level_Checker[4]; i++, j++) {//LV5 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[4][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[4], j = 0; i < Level_Checker[5]; i++, j++) {//LV6 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[4], j = 0; i < Level_Checker[5]; i++, j++) {//LV6 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[5][j] = UTF_FTU_ORDER[i];
 	}
 
-	for (int i = Level_Checker[5], j = 0; i < Level_Checker[6]; i++, j++) {//LV7 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[5], j = 0; i < Level_Checker[6]; i++, j++) {//LV7 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[6][j] = UTF_FTU_ORDER[i];
 	}
-	for (int i = Level_Checker[6], j = 0; i < Level_Checker[7]; i++, j++) {//LV8 ´Ü°è ¼ø¼­¸¸ ºÎºĞÀúÀå
+	for (int i = Level_Checker[6], j = 0; i < Level_Checker[7]; i++, j++) {//LV8 ë‹¨ê³„ ìˆœì„œë§Œ ë¶€ë¶„ì €ì¥
 		PARTIAL_ORDER[7][j] = UTF_FTU_ORDER[i];
 	}
 }
 
-void UTF_FTU_Add(void) //·ÎÅ×ÀÌÆ® ¿À´õ¿¡¼­ FB, UD°¡ ¸¸³¯¶§¸¶´Ù UTF, FTU Ãß°¡ÇØÁÜ
+void UTF_FTU_Add(void) //ë¡œí…Œì´íŠ¸ ì˜¤ë”ì—ì„œ FB, UDê°€ ë§Œë‚ ë•Œë§ˆë‹¤ UTF, FTU ì¶”ê°€í•´ì¤Œ
 {
 	bool U_Ui_D_Di_on = 1;
 	int index = 0;
@@ -938,7 +938,7 @@ void UTF_FTU_Add(void) //·ÎÅ×ÀÌÆ® ¿À´õ¿¡¼­ FB, UD°¡ ¸¸³¯¶§¸¶´Ù UTF, FTU Ãß°¡ÇØÁÜ
 	}
 }
 
-int UTF_FTU_Count(void) //·ÎÅ×ÀÌÆ® ¿À´õ¿¡¼­ FB, UD°¡ ¸¸³¯¶§¸¶´Ù UTF, FTU È½¼ö¸¦ °è»êÇØÁÜ
+int UTF_FTU_Count(void) //ë¡œí…Œì´íŠ¸ ì˜¤ë”ì—ì„œ FB, UDê°€ ë§Œë‚ ë•Œë§ˆë‹¤ UTF, FTU íšŸìˆ˜ë¥¼ ê³„ì‚°í•´ì¤Œ
 {
 	bool U_Ui_D_Di_on = 1;
 	int index = 0;
@@ -1002,10 +1002,10 @@ void Rotate180_Order_make(int rotate_order[]) {
 
 
 		while (1) {
-			for (int i = 0; i < 190; i++) { //º¯È¯ÀÌ ´Ù ³¡³µ´ÂÁö È®ÀÎÇÏ´Â ±¸°£
+			for (int i = 0; i < 190; i++) { //ë³€í™˜ì´ ë‹¤ ëë‚¬ëŠ”ì§€ í™•ì¸í•˜ëŠ” êµ¬ê°„
 				if ((rotate_order[i] == rotate_order[i + 1]) &&
 					( rotate_order[i] < 13) && rotate_order[i]!=0) {
-					flag = 1; //º¯È¯ ÇØÁà¾ßÇÒ ³à¼®ÀÌ ¾ÆÁ÷ ÀÖ±¸³ª!
+					flag = 1; //ë³€í™˜ í•´ì¤˜ì•¼í•  ë…€ì„ì´ ì•„ì§ ìˆêµ¬ë‚˜!
 					break;
 				}
 			}
@@ -1018,41 +1018,41 @@ void Rotate180_Order_make(int rotate_order[]) {
 			}
 
 			for (int i = 0; i < 190; i++) {
-				if (//¿©±â´Â RR => R2, RiRi=> R2, µîµî 180µµ È¸ÀüÀ¸·Î ¹Ù²ãÁØ´Ù.È¸Àü2°³°¡ 1°³·Î ¹Ù²ï´Ù.
+				if (//ì—¬ê¸°ëŠ” RR => R2, RiRi=> R2, ë“±ë“± 180ë„ íšŒì „ìœ¼ë¡œ ë°”ê¿”ì¤€ë‹¤.íšŒì „2ê°œê°€ 1ê°œë¡œ ë°”ë€ë‹¤.
 					((flag == 1) && (rotate_order[i] == rotate_order[i + 1]) && (rotate_order[i] != 0))
 					)
 				{
-					if (rotate_order[i] == 1 || rotate_order[i] == 2) // R¶Ç´Â Ri°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					if (rotate_order[i] == 1 || rotate_order[i] == 2) // Rë˜ëŠ” Riê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = R2;
 						shift_order_move1(rotate_order, i + 1);
 					}
 
-					else if (rotate_order[i] == 3 || rotate_order[i] == 4) // L¶Ç´Â Li°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					else if (rotate_order[i] == 3 || rotate_order[i] == 4) // Lë˜ëŠ” Liê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = L2;
 						shift_order_move1(rotate_order, i + 1);
 					}
 
-					else if (rotate_order[i] == 5 || rotate_order[i] == 6) // U¶Ç´Â Ui°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					else if (rotate_order[i] == 5 || rotate_order[i] == 6) // Uë˜ëŠ” Uiê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = U2;
 						shift_order_move1(rotate_order, i + 1);
 					}
 
-					else if (rotate_order[i] == 7 || rotate_order[i] == 8) // D¶Ç´Â Di°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					else if (rotate_order[i] == 7 || rotate_order[i] == 8) // Dë˜ëŠ” Diê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = D2;
 						shift_order_move1(rotate_order, i + 1);
 					}
 
-					else if (rotate_order[i] == 9 || rotate_order[i] == 10) // F¶Ç´Â Fi°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					else if (rotate_order[i] == 9 || rotate_order[i] == 10) // Fë˜ëŠ” Fiê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = F2;
 						shift_order_move1(rotate_order, i + 1);
 					}
 
-					else if (rotate_order[i] == 11 || rotate_order[i] == 12) // B¶Ç´Â Bi°¡ µÎ¹ø ¿¬¼ÓÀÏ¶§
+					else if (rotate_order[i] == 11 || rotate_order[i] == 12) // Bë˜ëŠ” Biê°€ ë‘ë²ˆ ì—°ì†ì¼ë•Œ
 					{
 						rotate_order[i] = B2;
 						shift_order_move1(rotate_order, i + 1);
@@ -1107,11 +1107,11 @@ int main()
 	system("v4l2-ctl --set-ctrl exposure_auto=1");
 	system("v4l2-ctl --set-ctrl exposure_absolute=303");
 	system("v4l2-ctl --set-ctrl exposure_auto_priority=0");
-	// Ä«¸Ş¶óÀÇ ¿©·¯ ºÎ°¡ ±â´ÉÀ» ÀüºÎ off ½ÃÅ´
+	// ì¹´ë©”ë¼ì˜ ì—¬ëŸ¬ ë¶€ê°€ ê¸°ëŠ¥ì„ ì „ë¶€ off ì‹œí‚´
 
 	if (wiringPiSetup() == -1)
 		return 1;
-	// ¶óÁîº£¸®ÆÄÀÌÀÇ ÃÊ±âÈ­
+	// ë¼ì¦ˆë² ë¦¬íŒŒì´ì˜ ì´ˆê¸°í™”
 
 
 	printf("Raspberry Pi Led control C++\n");
@@ -1125,7 +1125,7 @@ int main()
 	pinMode(BUTTON_B, INPUT);
 	pullUpDnControl(BUTTON_A, PUD_UP);
 	pullUpDnControl(BUTTON_B, PUD_UP);
-	//¹öÆ° A,B Ç®¾÷¸ğµå ¼³Á¤
+	//ë²„íŠ¼ A,B í’€ì—…ëª¨ë“œ ì„¤ì •
 	
 
 
@@ -1137,19 +1137,19 @@ int main()
 	system("echo 2=143>/dev/servoblaster");
 	system("echo 3=151>/dev/servoblaster");
 	system("echo 4=70>/dev/servoblaster");
-	// ¼­º¸¸ğÅÍ 4°³ ¸ğµÎ ±âº» À§Ä¡·Î ÃÊ±âÈ­
+	// ì„œë³´ëª¨í„° 4ê°œ ëª¨ë‘ ê¸°ë³¸ ìœ„ì¹˜ë¡œ ì´ˆê¸°í™”
 
 
 	while (1) 
-	{// ÀüÃ¼ ·çÇÁ
+	{// ì „ì²´ ë£¨í”„
 		digitalWrite(LED1, HIGH);
 		digitalWrite(LED2, HIGH);
 
 		Initialize_All_Global_Array();
-		// ¸ğµç º¯¼ö¸¦ 0À¸·Î ÃÊ±âÈ­
+		// ëª¨ë“  ë³€ìˆ˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
-		while (1) { //¹öÆ°A ÀÔ·Â ´ë±â ¸ğµå
-			if (digitalRead(BUTTON_A) == LOW) {// ¹öÆ°A°¡ ´­·¯Á³À» ¶§, ¹«ÇÑ·çÇÁ Å»Ãâ
+		while (1) { //ë²„íŠ¼A ì…ë ¥ ëŒ€ê¸° ëª¨ë“œ
+			if (digitalRead(BUTTON_A) == LOW) {// ë²„íŠ¼Aê°€ ëˆŒëŸ¬ì¡Œì„ ë•Œ, ë¬´í•œë£¨í”„ íƒˆì¶œ
 				delay(10);
 				break;
 			}
@@ -1169,11 +1169,11 @@ int main()
 
 		}
 
-		blink(); // ÃÔ¿µÀü LED¸¦ 3¹ø ±ôºıÀÓ
+		blink(); // ì´¬ì˜ì „ LEDë¥¼ 3ë²ˆ ê¹œë¹¡ì„
 
 		LV1(CUBE_ARRAY, initial_color, ROTATE_ORDER, Lv1_TARGET_array);
 		Level_Checker[0] = check_order_empty(ROTATE_ORDER) + UTF_FTU_Count();
-		//°¢ ´Ü°èº°·Î Ç®ÀÌ¸¦ °è»êÇÑ ÈÄ, Çà·Ä¿¡ ÀúÀåÇÔ
+		//ê° ë‹¨ê³„ë³„ë¡œ í’€ì´ë¥¼ ê³„ì‚°í•œ í›„, í–‰ë ¬ì— ì €ì¥í•¨
 
 		LV2(CUBE_ARRAY, initial_color, ROTATE_ORDER, Lv2_TARGET_array);
 		Level_Checker[1] = check_order_empty(ROTATE_ORDER) + UTF_FTU_Count();
@@ -1194,15 +1194,15 @@ int main()
 		Level_Checker[6] = check_order_empty(ROTATE_ORDER) + UTF_FTU_Count();
 
 		LV8(CUBE_ARRAY, initial_color, ROTATE_ORDER, Lv2_TARGET_array);
-		Level_Checker[7] = check_order_empty(ROTATE_ORDER) + UTF_FTU_Count(); //³ªÁß¿¡ È¸Àü¼ø¼­¸¦ ´Ü°èº°·Î ³ª´­¶§ »ç¿ëÇÒ ÀÎµ¦½º¸¦ °è»êÇÔ
+		Level_Checker[7] = check_order_empty(ROTATE_ORDER) + UTF_FTU_Count(); //ë‚˜ì¤‘ì— íšŒì „ìˆœì„œë¥¼ ë‹¨ê³„ë³„ë¡œ ë‚˜ëˆŒë•Œ ì‚¬ìš©í•  ì¸ë±ìŠ¤ë¥¼ ê³„ì‚°í•¨
 
-		UTF_FTU_Add(); // Áß°£Áß°£ ¸¶´Ù UTF, FTU¸¦ Ãß°¡ÇÏ¿© ROTATE_ORDERÀÇ ³»¿ëÀ» º¹»çÇÔ
+		UTF_FTU_Add(); // ì¤‘ê°„ì¤‘ê°„ ë§ˆë‹¤ UTF, FTUë¥¼ ì¶”ê°€í•˜ì—¬ ROTATE_ORDERì˜ ë‚´ìš©ì„ ë³µì‚¬í•¨
 
-		Partial_order_save(); // È¸Àü¼ø¼­¸¦ ´Ü°èº°·Î ³ª´©¾î¼­ °¢ ´Ü°èº°·Î ÀúÀåÇÔ
+		Partial_order_save(); // íšŒì „ìˆœì„œë¥¼ ë‹¨ê³„ë³„ë¡œ ë‚˜ëˆ„ì–´ì„œ ê° ë‹¨ê³„ë³„ë¡œ ì €ì¥í•¨
 
 
 
-		simplify_order(PARTIAL_ORDER[0]);//1 ´Ü°èºÎÅÍ
+		simplify_order(PARTIAL_ORDER[0]);//1 ë‹¨ê³„ë¶€í„°
 		Rotate180_Order_make(PARTIAL_ORDER[0]);
 
 		simplify_order(PARTIAL_ORDER[1]);
@@ -1223,18 +1223,18 @@ int main()
 		simplify_order(PARTIAL_ORDER[6]);
 		Rotate180_Order_make(PARTIAL_ORDER[6]);
 
-		simplify_order(PARTIAL_ORDER[7]);// ¸¶Áö¸· 8´Ü°è±îÁö ¼ø¼­¸¦ ÃÖÀûÈ­ÇØÁÜ
+		simplify_order(PARTIAL_ORDER[7]);// ë§ˆì§€ë§‰ 8ë‹¨ê³„ê¹Œì§€ ìˆœì„œë¥¼ ìµœì í™”í•´ì¤Œ
 		Rotate180_Order_make(PARTIAL_ORDER[7]);
 
 		bool flag_cube_complete = false;
 
 		if (ROTATE_ORDER[0] == 0) {
-			//Å¥ºê°¡ ÀÌ¹Ì ¿Ï¼ºÀÌ µÇ¾î ÀÖ´Â°¡? ¿Ï¼ºµÇ¾î ÀÖ´Ù¸é ¾Æ·¡¸¦ ½ÇÇà
+			//íë¸Œê°€ ì´ë¯¸ ì™„ì„±ì´ ë˜ì–´ ìˆëŠ”ê°€? ì™„ì„±ë˜ì–´ ìˆë‹¤ë©´ ì•„ë˜ë¥¼ ì‹¤í–‰
 
 			int difficult = 0;
-			flag_cube_complete = true; //Å¥ºê°¡ ¿Ï¼ºµÇ¾úÀ¸¸é ÇÃ·¡±×¸¦ 1·Î ¸¸µé¾îÁÜ
+			flag_cube_complete = true; //íë¸Œê°€ ì™„ì„±ë˜ì—ˆìœ¼ë©´ í”Œë˜ê·¸ë¥¼ 1ë¡œ ë§Œë“¤ì–´ì¤Œ
 
-			// Å¥ºêÀÇ ³­ÀÌµµ¸¦ ¹°¾îº¸´Â ¹®Àå
+			// íë¸Œì˜ ë‚œì´ë„ë¥¼ ë¬¼ì–´ë³´ëŠ” ë¬¸ì¥
 			cout << "When you type a number that indicates how difficult it is to solve a cube,"
 			   	<< "then the cube Solver mixes the cube accordingly.\n";
 			cout << "Hard       : 1\n";
@@ -1242,9 +1242,9 @@ int main()
 			cout << "easy       : 3\n";
 
 
-			cin >> difficult;//³­ÀÌµµ¸¦ ÀÔ·Â ¹ŞÀ½
+			cin >> difficult;//ë‚œì´ë„ë¥¼ ì…ë ¥ ë°›ìŒ
 
-			srand((unsigned int)time(NULL)); //·£´ıÇÔ¼ö
+			srand((unsigned int)time(NULL)); //ëœë¤í•¨ìˆ˜
 
 			if (difficult == 1)//hard mode
 			{
@@ -1269,21 +1269,21 @@ int main()
 			}
 
 			int Length = sizeof(ROTATE_ORDER) / sizeof(int);
-			Rotate_Motor(ROTATE_ORDER, Length); //³­ÀÌµµ´ë·Î ¸ğÅÍ¸¦ È¸Àü½ÃÅ´
-			RotateOrder_Reverse(Length); // È¸Àü¼ø¼­¸¦ ¹İ´ë·Î ÀúÀåÇÔ
+			Rotate_Motor(ROTATE_ORDER, Length); //ë‚œì´ë„ëŒ€ë¡œ ëª¨í„°ë¥¼ íšŒì „ì‹œí‚´
+			RotateOrder_Reverse(Length); // íšŒì „ìˆœì„œë¥¼ ë°˜ëŒ€ë¡œ ì €ì¥í•¨
 		}
 		else {
-			//Å¥ºê°¡ ¿Ï¼ºÀÌ ¾ÈµÇÀÖ´Ù¸é ¾Æ·¡¸¦ ½ÇÇà
+			//íë¸Œê°€ ì™„ì„±ì´ ì•ˆë˜ìˆë‹¤ë©´ ì•„ë˜ë¥¼ ì‹¤í–‰
 
-			flag_cube_complete = false; // ¿Ï¼ºÀÌ ¾È‰çÀ½À» Ç¥½ÃÇÏ´Â ÇÃ·¡±×
-			cout << endl << endl << "***Clean Order***" << endl; // È­¸é¿¡ ÀÌ ¹®ÀåÀ» Ãâ·Â
-			simplify_order(ROTATE_ORDER); //È¸Àü¼ø¼­°¡ ¾öÃ» ±â´Ï±î ÃÖÀûÈ­ÇÑ´Ù.
+			flag_cube_complete = false; // ì™„ì„±ì´ ì•ˆÂ‰ç‘›ìŠµ í‘œì‹œí•˜ëŠ” í”Œë˜ê·¸
+			cout << endl << endl << "***Clean Order***" << endl; // í™”ë©´ì— ì´ ë¬¸ì¥ì„ ì¶œë ¥
+			simplify_order(ROTATE_ORDER); //íšŒì „ìˆœì„œê°€ ì—„ì²­ ê¸°ë‹ˆê¹Œ ìµœì í™”í•œë‹¤.
 		}
-		show_order(ROTATE_ORDER); // È¸Àü¼ø¼­¸¦ º¸¿©ÁØ´Ù.
+		show_order(ROTATE_ORDER); // íšŒì „ìˆœì„œë¥¼ ë³´ì—¬ì¤€ë‹¤.
 
 		int B_count = 0;
 		while (1) {
-			if (digitalRead(BUTTON_A) == LOW)//A ¹öÆ°ÀÌ ´­·¯Áö¸é while¹® Å»ÃâÇØ¼­ ´Ù½Ã AÀÔ·Â¸ğµå·Î ³Ñ¾î°£´Ù.
+			if (digitalRead(BUTTON_A) == LOW)//A ë²„íŠ¼ì´ ëˆŒëŸ¬ì§€ë©´ whileë¬¸ íƒˆì¶œí•´ì„œ ë‹¤ì‹œ Aì…ë ¥ëª¨ë“œë¡œ ë„˜ì–´ê°„ë‹¤.
 			{
 				delay(10);
 				break;
@@ -1291,20 +1291,20 @@ int main()
 
 
 			if (digitalRead(BUTTON_B) == LOW) {
-				delay(10);	//B ¹öÆ°ÀÌ ´­·¯Áö¸é ´Ü°èº°·Î ÁøÇàÇÏ°Å³ª A½ºÀ§Ä¡ ÀÔ·Â¸ğµå·Î ³Ñ¾î°£´Ù.
-				if (flag_cube_complete == false) { //Å¥ºê°¡ ¿Ï¼ºÀÌ ¾ÈµÇ¾ú´Ù¸é, ¾Æ·¡¸¦ ½ÇÇà
-					if (B_count == 8) break; // ÀÌ¹Ì ¿Ï¼ºµÇ¾ú´Ù¸é A½ºÀ§Ä¡ ÀÔ·Â ´ë±â »óÅÂ·Î ³Ñ¾î°£´Ù. 
+				delay(10);	//B ë²„íŠ¼ì´ ëˆŒëŸ¬ì§€ë©´ ë‹¨ê³„ë³„ë¡œ ì§„í–‰í•˜ê±°ë‚˜ AìŠ¤ìœ„ì¹˜ ì…ë ¥ëª¨ë“œë¡œ ë„˜ì–´ê°„ë‹¤.
+				if (flag_cube_complete == false) { //íë¸Œê°€ ì™„ì„±ì´ ì•ˆë˜ì—ˆë‹¤ë©´, ì•„ë˜ë¥¼ ì‹¤í–‰
+					if (B_count == 8) break; // ì´ë¯¸ ì™„ì„±ë˜ì—ˆë‹¤ë©´ AìŠ¤ìœ„ì¹˜ ì…ë ¥ ëŒ€ê¸° ìƒíƒœë¡œ ë„˜ì–´ê°„ë‹¤. 
 
-					//¿Ï¼ºÀÌ ¾ÈµÇ¾ú´Ù¸é ¾Æ·¡ÀÇ 2¹®ÀåÀ» ½ÇÇàÇÑ´Ù.
-					Rotate_Motor(PARTIAL_ORDER[B_count], 100);//¸ğÅÍ¸¦ 1´Ü°è¾¿ µ¹·ÁÁØ´Ù.
-					B_count++; //B¸¦ 1¾¿ Áõ°¡ÇØÁÜ
+					//ì™„ì„±ì´ ì•ˆë˜ì—ˆë‹¤ë©´ ì•„ë˜ì˜ 2ë¬¸ì¥ì„ ì‹¤í–‰í•œë‹¤.
+					Rotate_Motor(PARTIAL_ORDER[B_count], 100);//ëª¨í„°ë¥¼ 1ë‹¨ê³„ì”© ëŒë ¤ì¤€ë‹¤.
+					B_count++; //Bë¥¼ 1ì”© ì¦ê°€í•´ì¤Œ
 				}
 				else
 				{
-					// Å¥ºê°¡ ¿Ï¼ºµÇ¾úÀ» ¶§ ¹İÀü½ÃÄ×´ø ¼ø¼­¸¦ ¿©±â¼­ ½ÇÇà½ÃÄÑÁØ´Ù.
+					// íë¸Œê°€ ì™„ì„±ë˜ì—ˆì„ ë•Œ ë°˜ì „ì‹œì¼°ë˜ ìˆœì„œë¥¼ ì—¬ê¸°ì„œ ì‹¤í–‰ì‹œì¼œì¤€ë‹¤.
 					Rotate_Motor(ROTATE_ORDER, 100); 
 					Initialize_All_Global_Array();
-					// °ü·ÃµÈ º¯¼ö¸¦ ¸ğµÎ ÃÊ±âÈ­ ½ÃÄÑÁØ´Ù.
+					// ê´€ë ¨ëœ ë³€ìˆ˜ë¥¼ ëª¨ë‘ ì´ˆê¸°í™” ì‹œì¼œì¤€ë‹¤.
 				}
 			}
 		}
@@ -1778,7 +1778,7 @@ void show_order(int order[]) {
 	}
 
 }
-int check_order_empty(int order[]) {// ¹è¿­ ¿ä¼Ò°¡ 0ÀÏ ¶§ ÀÎµ¦½º³Ñ¹ö¸¦ ¸®ÅÏÇÑ´Ù.
+int check_order_empty(int order[]) {// ë°°ì—´ ìš”ì†Œê°€ 0ì¼ ë•Œ ì¸ë±ìŠ¤ë„˜ë²„ë¥¼ ë¦¬í„´í•œë‹¤.
 	int num = 0;
 	for (int i = 0; i < 200; i++)
 	{
@@ -1790,7 +1790,7 @@ int check_order_empty(int order[]) {// ¹è¿­ ¿ä¼Ò°¡ 0ÀÏ ¶§ ÀÎµ¦½º³Ñ¹ö¸¦ ¸®ÅÏÇÑ´Ù.
 	}
 	return num;
 }
-bool check_front_cross(int cube_array[])//½ÊÀÚ°¡°¡ ¿Ï¼ºµÇ¾úÀ»¶§ true¸¦ ¸®ÅÏ
+bool check_front_cross(int cube_array[])//ì‹­ìê°€ê°€ ì™„ì„±ë˜ì—ˆì„ë•Œ trueë¥¼ ë¦¬í„´
 {
 	if (
 		(cube_array[40] == cube_array[52])
@@ -1803,8 +1803,8 @@ bool check_front_cross(int cube_array[])//½ÊÀÚ°¡°¡ ¿Ï¼ºµÇ¾úÀ»¶§ true¸¦ ¸®ÅÏ
 		return false;
 }
 int Lv1_search_target_block(int target_array[], int cube_array[]) {
-	//target_arrayÀÇ °ªÀº Å¸°ÙÀÇ ¹üÀ§´Ù.
-	//Å¸°ÙÀ» ¹ß°ßÇÏ´Â ¼ø°£ target_arrayÀÇ °ªÀ» ÀĞ¾î Å¸°ÙÀÇ À§Ä¡, Å¥ºêÀÇ ÀÎµ¦½º¸¦ ¸®ÅÏÇÑ´Ù.
+	//target_arrayì˜ ê°’ì€ íƒ€ê²Ÿì˜ ë²”ìœ„ë‹¤.
+	//íƒ€ê²Ÿì„ ë°œê²¬í•˜ëŠ” ìˆœê°„ target_arrayì˜ ê°’ì„ ì½ì–´ íƒ€ê²Ÿì˜ ìœ„ì¹˜, íë¸Œì˜ ì¸ë±ìŠ¤ë¥¼ ë¦¬í„´í•œë‹¤.
 	int num = 0;
 	for (int i = 0; i < 50; i++)
 	{
@@ -1816,7 +1816,7 @@ int Lv1_search_target_block(int target_array[], int cube_array[]) {
 	}
 	return num;
 }
-int Give_target_block_partner_location(int target_location) {//Å¸°ÙÀ» Ã£À¸¸é ±× ¿·¸éÀÇ ¿ä¼Ò¸¦ Ã£´Â´Ù.
+int Give_target_block_partner_location(int target_location) {//íƒ€ê²Ÿì„ ì°¾ìœ¼ë©´ ê·¸ ì˜†ë©´ì˜ ìš”ì†Œë¥¼ ì°¾ëŠ”ë‹¤.
 	int num = 0;
 	if (target_location == 4)
 		num = 46;
@@ -1864,7 +1864,7 @@ int Give_target_block_partner_location(int target_location) {//Å¸°ÙÀ» Ã£À¸¸é ±× 
 
 }
 int search_side_center(int cube_array[], int partner_location) {
-	//Å¸°Ùºí·Ï ¿·¸éÀÇ ¿ä¼Ò¿Í °°Àº »ö±òÀ» °¡Áø ¿·¸éÀÇ Áß¾ÓÀ» Ã£À½
+	//íƒ€ê²Ÿë¸”ë¡ ì˜†ë©´ì˜ ìš”ì†Œì™€ ê°™ì€ ìƒ‰ê¹”ì„ ê°€ì§„ ì˜†ë©´ì˜ ì¤‘ì•™ì„ ì°¾ìŒ
 	int num = 0;
 	if (cube_array[16] == cube_array[partner_location])
 		num = 16;
@@ -1879,7 +1879,7 @@ int search_side_center(int cube_array[], int partner_location) {
 	return num;
 }
 void HowToRotate(int target_location, int order[]) {
-	// È¸Àü°ú Ãæµ¹°Ë»ç¸¦ °è¼Ó ¹İº¹ÇÏ¸é¼­ ROTATE_ORDER¿¡ È¸ÀüÇÒ¶§¸¶´Ù ±â·ÏÇÑ´Ù.
+	// íšŒì „ê³¼ ì¶©ëŒê²€ì‚¬ë¥¼ ê³„ì† ë°˜ë³µí•˜ë©´ì„œ ROTATE_ORDERì— íšŒì „í• ë•Œë§ˆë‹¤ ê¸°ë¡í•œë‹¤.
 	if (target_location == 4) {
 		Rotate R;
 		R.U(CUBE_ARRAY, order);
@@ -2259,18 +2259,18 @@ void LV1(int cube_array[], int color[], int rotate_order[], int lv1_target_array
 		if (check_front_cross(CUBE_ARRAY) == true)
 		{
 
-			show_order(ROTATE_ORDER);//°á°ú¸¦ º¸°í½Í´Ù¸é ÁÖ¼®ÇØÁ¦ÇÏ¸é µÈ´Ù.
+			show_order(ROTATE_ORDER);//ê²°ê³¼ë¥¼ ë³´ê³ ì‹¶ë‹¤ë©´ ì£¼ì„í•´ì œí•˜ë©´ ëœë‹¤.
 			cout << "LV1 is Complete" << endl;
 			break;
 		}
 
 		int target_location = Lv1_search_target_block(Lv1_TARGET_array, CUBE_ARRAY);
-		//¸¸¾à¿¡ Å¸°ÙÀ» ¹ß°ßÇÒ°æ¿ì Å¸°ÙÀÇ À§Ä¡¸¦ ³Ñ°ÜÁØ´Ù. ¸ø Ã£´Â´Ù¸é??
-		//(¿©±â¼­ Å¸°ÙÀÌ¶õ ½ÊÀÚ°¡ÀÇ ¼öÆò¼öÁ÷¼ººĞÀÌ ¿·¸é¿¡ Èğ¾îÁ® ÀÖ´Â ºí·ÏÀ» ¸»ÇÑ´Ù.)
+		//ë§Œì•½ì— íƒ€ê²Ÿì„ ë°œê²¬í• ê²½ìš° íƒ€ê²Ÿì˜ ìœ„ì¹˜ë¥¼ ë„˜ê²¨ì¤€ë‹¤. ëª» ì°¾ëŠ”ë‹¤ë©´??
+		//(ì—¬ê¸°ì„œ íƒ€ê²Ÿì´ë€ ì‹­ìê°€ì˜ ìˆ˜í‰ìˆ˜ì§ì„±ë¶„ì´ ì˜†ë©´ì— í©ì–´ì ¸ ìˆëŠ” ë¸”ë¡ì„ ë§í•œë‹¤.)
 
 
 		HowToRotate(target_location, ROTATE_ORDER);
-		// È¸Àü°ú Ãæµ¹°Ë»ç¸¦ °è¼Ó ¹İº¹ÇÏ¸é¼­ ROTATE_ORDER¿¡ È¸ÀüÇÒ¶§¸¶´Ù ±â·ÏÇÑ´Ù.
+		// íšŒì „ê³¼ ì¶©ëŒê²€ì‚¬ë¥¼ ê³„ì† ë°˜ë³µí•˜ë©´ì„œ ROTATE_ORDERì— íšŒì „í• ë•Œë§ˆë‹¤ ê¸°ë¡í•œë‹¤.
 
 	}
 
@@ -2281,8 +2281,8 @@ void LV2(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_SideOfCross_equal_SideOfCenter_COLOR(CUBE_ARRAY) == true)
-		{//LV2°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
-			LV_show_order(ROTATE_ORDER, order_index);//°á°ú¸¦ º¸°í½Í´Ù¸é ÁÖ¼®ÇØÁ¦ÇÏ¸é µÈ´Ù.
+		{//LV2ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
+			LV_show_order(ROTATE_ORDER, order_index);//ê²°ê³¼ë¥¼ ë³´ê³ ì‹¶ë‹¤ë©´ ì£¼ì„í•´ì œí•˜ë©´ ëœë‹¤.
 			cout << "LV2 is Complete" << endl;
 			break;
 		}
@@ -2545,16 +2545,16 @@ void LV3(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV3_complete(CUBE_ARRAY) == true)
-		{//LV3°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV3ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
-			LV_show_order(ROTATE_ORDER, order_index);//°á°ú¸¦ º¸°í½Í´Ù¸é ÁÖ¼®ÇØÁ¦ÇÏ¸é µÈ´Ù.
+			LV_show_order(ROTATE_ORDER, order_index);//ê²°ê³¼ë¥¼ ë³´ê³ ì‹¶ë‹¤ë©´ ì£¼ì„í•´ì œí•˜ë©´ ëœë‹¤.
 			cout << "LV3 is Complete!" << endl;
 			break;
 		}
 
-		// LV3°¡ ¿Ï¼º µÇ¾ú´ÂÁö °Ë»çÇÑ´Ù. ¿Ï¼ºµÇ¸é ¹«ÇÑ·çÇÁ¿¡¼­ Å»ÃâÇÑ´Ù.
+		// LV3ê°€ ì™„ì„± ë˜ì—ˆëŠ”ì§€ ê²€ì‚¬í•œë‹¤. ì™„ì„±ë˜ë©´ ë¬´í•œë£¨í”„ì—ì„œ íƒˆì¶œí•œë‹¤.
 		side3_assemble(cube_array);
-		//side3 ¾î¼ÀºíÀº Á¶±İ ºÒÇÊ¿äÇÑ µŞ¸éÈ¸ÀüÀÌ ÀÖÁö¸¸, ¾îÂ·°Å³ª ¹«»çÈ÷ ÀÓ¹«¸¦ ¿Ï¼öÇÑ´Ù.
+		//side3 ì–´ì…ˆë¸”ì€ ì¡°ê¸ˆ ë¶ˆí•„ìš”í•œ ë’·ë©´íšŒì „ì´ ìˆì§€ë§Œ, ì–´ì¨Œê±°ë‚˜ ë¬´ì‚¬íˆ ì„ë¬´ë¥¼ ì™„ìˆ˜í•œë‹¤.
 		side1_move_to_side3(cube_array);
 		side3_assemble(cube_array);
 		front_move_to_side3(cube_array);
@@ -2588,7 +2588,7 @@ bool check_LV3_complete(int cube_array[]) {
 			(cube_array[62] == cube_array[49])
 			)
 		{
-			num = true;// LV3°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+			num = true;// LV3ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 		}
 
 	}
@@ -2611,7 +2611,7 @@ void side3_assemble(int cube_array[]) {
 			Is_equal_101_88(cube_array);
 			Is_equal_44_55(cube_array);
 			Is_equal_3_16(cube_array);
-			//cout << "¼³¸¶";
+			//cout << "ì„¤ë§ˆ";
 		}
 		if (cube_array[101] == cube_array[52]) {
 			Is_equal_68_55(cube_array);
@@ -2667,7 +2667,7 @@ void Is_equal_60_49(int cube_array[]) {
 	}
 	else
 		rotate.B(cube_array, ROTATE_ORDER);
-}//ÀßÀÛµ¿
+}//ì˜ì‘ë™
 void Is_equal_101_88(int cube_array[]) {
 	Rotate rotate;
 	if ((cube_array[101] == cube_array[88]) && (cube_array[68] == cube_array[52]))
@@ -2678,7 +2678,7 @@ void Is_equal_101_88(int cube_array[]) {
 	}
 	else
 		rotate.B(cube_array, ROTATE_ORDER);
-}//Àß ÀÛµ¿
+}//ì˜ ì‘ë™
 void Is_equal_44_55(int cube_array[]) {
 	Rotate rotate;
 	if ((cube_array[44] == cube_array[55]) && (cube_array[5] == cube_array[52]))
@@ -2687,7 +2687,7 @@ void Is_equal_44_55(int cube_array[]) {
 		rotate.Bi(cube_array, ROTATE_ORDER);
 		rotate.U(cube_array, ROTATE_ORDER);
 
-	}//¸Â´Ù
+	}//ë§ë‹¤
 	else
 		rotate.B(cube_array, ROTATE_ORDER);
 }
@@ -2952,7 +2952,7 @@ void simplify_order(int rotate_order[]) {
 			if (
 				(rotate_order[i] == rotate_order[i + 1]) && (rotate_order[i + 1] == rotate_order[i + 2])
 				
-				)//¿¬´Ş¾Æ¼­ RRR,FFF³ª¿À´ÂÁö °Ë»çÇÑ´Ù. ±×¸®°í RRRÀÌ¸é Ri·Î Ä¡È¯ÇÏ°í ¹è¿­À» ¾ÕÀ¸·Î ´ç°ÜÁØ´Ù.
+				)//ì—°ë‹¬ì•„ì„œ RRR,FFFë‚˜ì˜¤ëŠ”ì§€ ê²€ì‚¬í•œë‹¤. ê·¸ë¦¬ê³  RRRì´ë©´ Rië¡œ ì¹˜í™˜í•˜ê³  ë°°ì—´ì„ ì•ìœ¼ë¡œ ë‹¹ê²¨ì¤€ë‹¤.
 			{
 				if (rotate_order[i] == 1)
 				{
@@ -3027,7 +3027,7 @@ void simplify_order(int rotate_order[]) {
 					break;
 				}
 			}
-			if (//¿©±â´Â R°ú Ri°¡ ¼­·Î ¸¸³ª´ÂÁö °Ë»ç¸¦ ÇÑ´Ù. ¼­·Î ¸¸³ª¸é ¹è¿­À» ±×³É µÚ¿¡¼­ ¾ÕÀ¸·Î µ¤¾î ¾º¿î´Ù.
+			if (//ì—¬ê¸°ëŠ” Rê³¼ Riê°€ ì„œë¡œ ë§Œë‚˜ëŠ”ì§€ ê²€ì‚¬ë¥¼ í•œë‹¤. ì„œë¡œ ë§Œë‚˜ë©´ ë°°ì—´ì„ ê·¸ëƒ¥ ë’¤ì—ì„œ ì•ìœ¼ë¡œ ë®ì–´ ì”Œìš´ë‹¤.
 				((rotate_order[i] == 1) && (rotate_order[i + 1] == 2)) ||
 				((rotate_order[i] == 2) && (rotate_order[i + 1] == 1)) ||
 				((rotate_order[i] == 3) && (rotate_order[i + 1] == 4)) ||
@@ -3084,9 +3084,9 @@ void LV4(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV4_complete(CUBE_ARRAY) == true)
-		{//LV4°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV4ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
-			LV_show_order(ROTATE_ORDER, order_index);//°á°ú¸¦ º¸°í½Í´Ù¸é ÁÖ¼®ÇØÁ¦ÇÏ¸é µÈ´Ù.
+			LV_show_order(ROTATE_ORDER, order_index);//ê²°ê³¼ë¥¼ ë³´ê³ ì‹¶ë‹¤ë©´ ì£¼ì„í•´ì œí•˜ë©´ ëœë‹¤.
 			cout << "LV4 is Complete!" << endl;
 			break;
 		}
@@ -3283,7 +3283,7 @@ bool check_LV4_complete(int cube_array[])
 			)
 
 	{
-		num = true;// LV4°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV4ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3335,7 +3335,7 @@ void LV5(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV5_complete(CUBE_ARRAY) == true)
-		{//LV5°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV5ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
 			LV_show_order(ROTATE_ORDER, order_index);
 			cout << "LV5 is Complete!" << endl;
@@ -3375,7 +3375,7 @@ void LV5(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 			continue;
 		}
 
-		//³ª¸ÓÁö ÇÑ Á¡ÀÏ ¶§ ½ÇÇàµÇ´Â °Íµé
+		//ë‚˜ë¨¸ì§€ í•œ ì ì¼ ë•Œ ì‹¤í–‰ë˜ëŠ” ê²ƒë“¤
 		rotate.D(cube_array, ROTATE_ORDER);
 		rotate.B(cube_array, ROTATE_ORDER);
 		rotate.L(cube_array, ROTATE_ORDER);
@@ -3396,7 +3396,7 @@ bool check_LV5_complete(int cube_array[])
 			)
 
 	{
-		num = true;// LV5°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV5ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3418,7 +3418,7 @@ bool is_LV5_L_shape_exist(int cube_array[])
 			)
 
 	{
-		num = true;// LV4°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV4ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3438,7 +3438,7 @@ bool is_LV5_bar_shape_exist(int cube_array[])
 			)
 
 	{
-		num = true;// LV4°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV4ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3454,7 +3454,7 @@ void LV6(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV6_complete(CUBE_ARRAY) == true)
-		{//LV6 ¹Ù´Ú¸é ÀüÃ¼°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV6 ë°”ë‹¥ë©´ ì „ì²´ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
 			LV_show_order(ROTATE_ORDER, order_index);
 			cout << "LV6 is Complete!" << endl;
@@ -3526,7 +3526,7 @@ bool check_LV6_complete(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV6°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV6ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3549,7 +3549,7 @@ bool is_LV6_No_coner(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV4°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV4ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3659,7 +3659,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV7_complete(CUBE_ARRAY) == true)
-		{//LV7°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV7ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
 			LV_show_order(ROTATE_ORDER, order_index);
 			cout << "LV7 is Complete!" << endl;
@@ -3668,7 +3668,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 		if (is_LV7_same_direction(cube_array) == true) {
 			if ((cube_array[99] == cube_array[88]) && (cube_array[101] == cube_array[88]))
 			{
-				//		cout << "88¹æÇâÀ¸·Î µÎ°³ ¸ÂÀ½" << endl;
+				//		cout << "88ë°©í–¥ìœ¼ë¡œ ë‘ê°œ ë§ìŒ" << endl;
 				rotate.Ri(cube_array, ROTATE_ORDER);
 				rotate.U(cube_array, ROTATE_ORDER);
 				rotate.Ri(cube_array, ROTATE_ORDER);
@@ -3686,7 +3686,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 			}
 			if ((cube_array[68] == cube_array[55]) && (cube_array[44] == cube_array[55]))
 			{
-				//cout << "55¹æÇâÀ¸·Î µÎ°³ ¸ÂÀ½" << endl;
+				//cout << "55ë°©í–¥ìœ¼ë¡œ ë‘ê°œ ë§ìŒ" << endl;
 
 				rotate.Ui(cube_array, ROTATE_ORDER);
 				rotate.L(cube_array, ROTATE_ORDER);
@@ -3705,7 +3705,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 			}
 			if ((cube_array[3] == cube_array[16]) && (cube_array[5] == cube_array[16]))
 			{
-				//	cout << "16¹æÇâÀ¸·Î µÎ°³ ¸ÂÀ½" << endl;
+				//	cout << "16ë°©í–¥ìœ¼ë¡œ ë‘ê°œ ë§ìŒ" << endl;
 
 
 				rotate.Li(cube_array, ROTATE_ORDER);
@@ -3725,7 +3725,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 			}
 			if ((cube_array[36] == cube_array[49]) && (cube_array[60] == cube_array[49]))
 			{
-				//cout << "49¹æÇâÀ¸·Î µÎ°³ ¸ÂÀ½" << endl;
+				//cout << "49ë°©í–¥ìœ¼ë¡œ ë‘ê°œ ë§ìŒ" << endl;
 
 
 				rotate.Di(cube_array, ROTATE_ORDER);
@@ -3745,7 +3745,7 @@ void LV7(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 			}
 		}
 		if (is_LV7_diagonal_direction(cube_array) == true) {
-			//				cout << "´ë°¢ ¹æÇâÀ¸·Î ¸ÂÀ½" << endl;
+			//				cout << "ëŒ€ê° ë°©í–¥ìœ¼ë¡œ ë§ìŒ" << endl;
 			rotate.Li(cube_array, ROTATE_ORDER);
 			rotate.D(cube_array, ROTATE_ORDER);
 			rotate.Li(cube_array, ROTATE_ORDER);
@@ -3774,7 +3774,7 @@ bool check_LV7_complete(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV7°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV7ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3795,7 +3795,7 @@ bool is_LV7_same_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV7°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV7ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 	else {
@@ -3820,7 +3820,7 @@ bool is_LV7_diagonal_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV7°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV7ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -3835,7 +3835,7 @@ void LV8(int cube_array[], int color[], int rotate_order[], int lv2_target_array
 	int order_index = check_order_empty(ROTATE_ORDER);
 	while (1) {
 		if (check_LV8_complete(CUBE_ARRAY) == true)
-		{//LV8°¡ ¿Ï¼ºµÇ¾ú´ÂÁö ¹°¾îº»´Ù.
+		{//LV8ê°€ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ë¬¼ì–´ë³¸ë‹¤.
 
 			LV_show_order(ROTATE_ORDER, order_index);
 			cout << "LV8 is Complete!, and all work is done!" << endl;
@@ -4041,7 +4041,7 @@ bool check_LV8_complete(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4061,7 +4061,7 @@ bool is_LV8_complete_side_face_exist(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4078,7 +4078,7 @@ bool is_LV8_88_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4095,7 +4095,7 @@ bool is_LV8_55_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4112,7 +4112,7 @@ bool is_LV8_16_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4129,7 +4129,7 @@ bool is_LV8_49_direction(int cube_array[]) {
 			)
 
 	{
-		num = true;// LV8°¡ ¿Ï¼ºµÇ¸é true¸¦ ¸®ÅÏÇÑ´Ù.
+		num = true;// LV8ê°€ ì™„ì„±ë˜ë©´ trueë¥¼ ë¦¬í„´í•œë‹¤.
 	}
 
 
@@ -4348,9 +4348,9 @@ void Send_picture_data_to_cube(int initial_color_cv[], int represent_color[], in
 		initial_color_cv[61] = represent_color[7];
 		initial_color_cv[62] = represent_color[8];
 		
-		// horizontal rotate¿Í vertical back rotate¸¦ ÇÕÃÄ³õÀº°Çµ¥ ¾à°£ ¼öÁ¤À» ÇØÁÜ
+		// horizontal rotateì™€ vertical back rotateë¥¼ í•©ì³ë†“ì€ê±´ë° ì•½ê°„ ìˆ˜ì •ì„ í•´ì¤Œ
 
-		move13_OUT();//holding Ãß°¡ ÇØÁÙ°Í
+		move13_OUT();//holding ì¶”ê°€ í•´ì¤„ê²ƒ
 
 		servo0_R90();
 		delay(2);
@@ -4413,7 +4413,7 @@ void Send_picture_data_to_cube(int initial_color_cv[], int represent_color[], in
 		initial_color_cv[101] = represent_color[8];
 
 
-		//vertical_rotate_backÀÌ´Ù.
+		//vertical_rotate_backì´ë‹¤.
 
 
 		servo1_vertical();
