@@ -35,7 +35,7 @@
 ![슬라이드16](https://user-images.githubusercontent.com/35258559/178184487-d3c15113-0d0e-47fc-aa7e-fa62e55acfa0.JPG)   <br/><br/>
 ![슬라이드17](https://user-images.githubusercontent.com/35258559/178184488-dc6b2ce9-37a7-4a98-a8a3-6d21b03b7814.JPG)   <br/><br/>
 ![181119 - 캡디 마지막 발표자료](https://user-images.githubusercontent.com/35258559/178198152-6bb8f59e-5c41-45cf-9533-5e95d3358092.jpg) <br/><br/>
-![슬라이드20](https://user-images.githubusercontent.com/35258559/178184492-bee8460a-1570-4991-9408-5b9a778a8687.JPG)   <br/><br/>
+![181119 - 캡디 마지막 발표자료](https://user-images.githubusercontent.com/35258559/178198998-70985690-ea66-4ae0-b395-9062662a84cf.jpg) <br/><br/>
 ![슬라이드21](https://user-images.githubusercontent.com/35258559/178184493-82f6b0e6-c0ff-4fff-a29b-59c07ea4c29e.JPG)   <br/><br/>
 ![슬라이드22](https://user-images.githubusercontent.com/35258559/178184494-d51e75bb-c58c-42a7-a935-0eaa9056d280.JPG)   <br/><br/>
 ![슬라이드23](https://user-images.githubusercontent.com/35258559/178184496-faa84bdb-9ea3-4cea-94ab-093c07ddc9ea.JPG)   <br/><br/>
