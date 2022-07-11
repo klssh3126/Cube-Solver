@@ -16,7 +16,9 @@ C++, openCV, RaspberryPi3, Inventor, 3D 프린터
 
 ![슬라이드1](https://user-images.githubusercontent.com/35258559/178184463-30b085d3-b86c-40cc-9064-63f7018703db.JPG)   
 ![슬라이드2](https://user-images.githubusercontent.com/35258559/178184465-702cdec0-be0e-432c-9c3f-21f96dce146f.JPG)   
-![슬라이드3](https://user-images.githubusercontent.com/35258559/178184468-209b4029-3836-41fa-8445-fed53209d55e.JPG)   
+![슬라이드3](https://user-images.githubusercontent.com/35258559/178184468-209b4029-3836-41fa-8445-fed53209d55e.JPG) 
+![큐브풀이순서](https://user-images.githubusercontent.com/35258559/178190638-5c56f8f1-1124-4d98-80ba-ce1ec6fd6986.JPG)
+  
 ![슬라이드4](https://user-images.githubusercontent.com/35258559/178184470-e05cf2e7-f752-40c2-8d83-cce5b9de72ae.JPG)   
 ![슬라이드5](https://user-images.githubusercontent.com/35258559/178184472-82b7534c-9e2f-4573-993f-0dd792401a59.JPG)   
 ![슬라이드6](https://user-images.githubusercontent.com/35258559/178184473-90c119a0-5e0d-4c03-aca1-237fb3111e56.JPG)   
@@ -24,8 +26,9 @@ C++, openCV, RaspberryPi3, Inventor, 3D 프린터
 ![슬라이드8](https://user-images.githubusercontent.com/35258559/178184478-1a12b255-eae6-4dc3-b615-277cb4a459fc.JPG)   
 ![슬라이드10](https://user-images.githubusercontent.com/35258559/178184479-e0af3f31-fc98-4fa4-9505-ef1152203546.JPG)   
 ![슬라이드11](https://user-images.githubusercontent.com/35258559/178184480-0626e839-c653-47e6-9781-5e788fb64319.JPG)   
-![슬라이드12](https://user-images.githubusercontent.com/35258559/178184481-6b57f9a2-22ff-4460-b8ad-bd70f1f80b15.JPG)   
-![슬라이드13](https://user-images.githubusercontent.com/35258559/178184482-d3625510-cdc0-4020-b9e3-502f661352fd.JPG)   
+![슬라이드12](https://user-images.githubusercontent.com/35258559/178184481-6b57f9a2-22ff-4460-b8ad-bd70f1f80b15.JPG)  
+![회로도](https://user-images.githubusercontent.com/35258559/178190585-e35f6089-4728-4392-82f7-0862b42ec081.JPG)
+![슬라이드13](https://user-images.githubusercontent.com/35258559/178184482-d3625510-cdc0-4020-b9e3-502f661352fd.JPG)  
 ![슬라이드14](https://user-images.githubusercontent.com/35258559/178184483-bcf7a71e-09d3-494b-b227-061c05261254.JPG)   
 ![슬라이드15](https://user-images.githubusercontent.com/35258559/178184484-95e290e1-d908-44b5-b0fd-b397dadde059.JPG)   
 ![슬라이드16](https://user-images.githubusercontent.com/35258559/178184487-d3c15113-0d0e-47fc-aa7e-fa62e55acfa0.JPG)   
