@@ -4,13 +4,13 @@
 
    
 ![Cube_solver_version2_cropped](https://user-images.githubusercontent.com/35258559/178189067-6db1f332-aa54-4000-b453-476c7bd77eaa.gif)
-<br/>
+<br/><br/>
        
 ![Cube_solver_version2](https://user-images.githubusercontent.com/35258559/178189086-e5ea1ef4-760f-4bd4-9ce8-4bab308f0f68.gif)
-<br/> 
+<br/> <br/>
        
 ![Cube_solver_version2 (1)](https://user-images.githubusercontent.com/35258559/178189089-ad959116-f2cd-4c8f-ac76-c647ddd18ecf.gif)
-<br/><br/>
+<br/><br/><br/>
 
 # 사용 기술
 ### C++, openCV, RaspberryPi3, Inventor, 3D 프린터
