@@ -10,10 +10,6 @@
        
 ![Cube_solver_version2 (1)](https://user-images.githubusercontent.com/35258559/178189089-ad959116-f2cd-4c8f-ac76-c647ddd18ecf.gif)   
        
-       
-       
-       
-
 
 ![슬라이드1](https://user-images.githubusercontent.com/35258559/178184463-30b085d3-b86c-40cc-9064-63f7018703db.JPG)   
 ![슬라이드2](https://user-images.githubusercontent.com/35258559/178184465-702cdec0-be0e-432c-9c3f-21f96dce146f.JPG)   
@@ -36,5 +32,5 @@
 ![슬라이드21](https://user-images.githubusercontent.com/35258559/178184493-82f6b0e6-c0ff-4fff-a29b-59c07ea4c29e.JPG)   
 ![슬라이드22](https://user-images.githubusercontent.com/35258559/178184494-d51e75bb-c58c-42a7-a935-0eaa9056d280.JPG)   
 ![슬라이드23](https://user-images.githubusercontent.com/35258559/178184496-faa84bdb-9ea3-4cea-94ab-093c07ddc9ea.JPG)   
-![슬라이드24](https://user-images.githubusercontent.com/35258559/178184498-4b2a5ba1-3f71-49b9-8e1d-bb76f42d5489.JPG)   
+
      
