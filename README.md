@@ -1,6 +1,6 @@
 # Cube-Solver
 =======
-# 캡스톤디자인 큐브솔버 https://www.youtube.com/watch?v=H08CGIq9q4M   
+### 캡스톤디자인 큐브솔버 https://www.youtube.com/watch?v=H08CGIq9q4M   
 
    
 ![Cube_solver_version2_cropped](https://user-images.githubusercontent.com/35258559/178189067-6db1f332-aa54-4000-b453-476c7bd77eaa.gif)
