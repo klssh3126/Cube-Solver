@@ -9,7 +9,10 @@
          
        
 ![Cube_solver_version2 (1)](https://user-images.githubusercontent.com/35258559/178189089-ad959116-f2cd-4c8f-ac76-c647ddd18ecf.gif)   
-       
+
+#사용 기술
+C++, openCV, RaspberryPi3, Inventor, 3D 프린터
+
 
 ![슬라이드1](https://user-images.githubusercontent.com/35258559/178184463-30b085d3-b86c-40cc-9064-63f7018703db.JPG)   
 ![슬라이드2](https://user-images.githubusercontent.com/35258559/178184465-702cdec0-be0e-432c-9c3f-21f96dce146f.JPG)   
