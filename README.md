@@ -13,7 +13,7 @@
 ![Cube_solver_version2 (1)](https://user-images.githubusercontent.com/35258559/178189089-ad959116-f2cd-4c8f-ac76-c647ddd18ecf.gif)
 <br/><br/><br/><br/>
 
-#목차 
+# 목차 
 [1. 사용기술](#사용-기술) <br/>
 [2. 프로젝트 수행 회고](#프로젝트-수행-회고) <br/>
 [3. 큐브 풀이법 계산](#큐브-풀이법-계산) <br/>
