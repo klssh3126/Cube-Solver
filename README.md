@@ -21,9 +21,9 @@
 ![슬라이드1](https://user-images.githubusercontent.com/35258559/178184463-30b085d3-b86c-40cc-9064-63f7018703db.JPG)   <br/><br/>
 ![큐브풀이순서](https://user-images.githubusercontent.com/35258559/178190638-5c56f8f1-1124-4d98-80ba-ce1ec6fd6986.JPG)   <br/><br/>
 ![슬라이드2](https://user-images.githubusercontent.com/35258559/178184465-702cdec0-be0e-432c-9c3f-21f96dce146f.JPG)   <br/><br/>
+![슬라이드5](https://user-images.githubusercontent.com/35258559/178184472-82b7534c-9e2f-4573-993f-0dd792401a59.JPG)   <br/><br/>
 ![슬라이드3](https://user-images.githubusercontent.com/35258559/178184468-209b4029-3836-41fa-8445-fed53209d55e.JPG) <br/> <br/>
 ![슬라이드4](https://user-images.githubusercontent.com/35258559/178184470-e05cf2e7-f752-40c2-8d83-cce5b9de72ae.JPG)   <br/><br/>
-![슬라이드5](https://user-images.githubusercontent.com/35258559/178184472-82b7534c-9e2f-4573-993f-0dd792401a59.JPG)   <br/><br/>
 ![슬라이드6](https://user-images.githubusercontent.com/35258559/178184473-90c119a0-5e0d-4c03-aca1-237fb3111e56.JPG)   <br/><br/>
 ![슬라이드7](https://user-images.githubusercontent.com/35258559/178184475-12f4ef98-0d63-4897-bc49-d7171e918d5e.JPG)   <br/><br/>
 ![슬라이드8](https://user-images.githubusercontent.com/35258559/178184478-1a12b255-eae6-4dc3-b615-277cb4a459fc.JPG)   <br/><br/>
