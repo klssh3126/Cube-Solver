@@ -1,5 +1,5 @@
 # Cube-Solver <br/>
-# 3학년 2학기, 4학년 1학기 캡스톤디자인 프로젝트 
+#### 3학년 2학기, 4학년 1학기 캡스톤디자인 프로젝트 
 ### 캡스톤디자인 큐브솔버 https://www.youtube.com/watch?v=H08CGIq9q4M   <br/>
 <br/>
 
