@@ -1,6 +1,7 @@
 # Cube-Solver <br/>
 #### 3학년 2학기, 4학년 1학기 캡스톤디자인 프로젝트 
 #### 캡스톤디자인 큐브솔버 https://youtu.be/CwSUrnAxTK0  <br/>
+20141618 김영욱
 <br/>
 
 
